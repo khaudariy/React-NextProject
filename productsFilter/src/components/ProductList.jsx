@@ -9,9 +9,9 @@ import productStore from "../store";
 const ProductList = () => {
 
 
-    const {products,setProducts} =productStore();
+    const {products,setProducts,filters} = productStore();
     useEffect(()=>{
-        fetchProducts().then(setProducts)
+        fetchProducts(filters).then(setProducts)
     },[])
     return(
         <div>

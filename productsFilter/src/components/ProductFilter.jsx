@@ -8,12 +8,21 @@ import { useEffect } from "react";
 
 const ProductFilter=()=>{
 
-    const {categories,setCategories} = productStore();
+    const {categories,setCategories,filters,setFilters} = productStore();
 
 
     useEffect(()=>{
         fetchCategory().then(setCategories)
     },[])
+
+    const handelCategoryChange = (e) => {
+        const {value,checked} = e.target
+        console.log(value,checked)
+    }
+    const handePriceChange = (e) => {
+        const {value,checked} = e.target
+        console.log(value,checked)
+    }
 
 
     return(
@@ -26,7 +35,11 @@ const ProductFilter=()=>{
                     category
                     {categories.map(cat => (
                         <div key = {cat.id} className="form-check">
-                            <input type="checkbox" className="form-check-input"/>
+                            <input type="checkbox" 
+                            className="form-check-input"
+                            value={cat.id}
+                            onChange={handelCategoryChange}
+                            />
                             <label htmlFor="">{cat.name}</label>
 
                         </div>
@@ -39,10 +52,20 @@ const ProductFilter=()=>{
                 </h5>
                 <div className="row">
                     <div className="col">
-                        <input type="number" className="form-control" placeholder="Min Price"/>
+                        <input type="number"
+                         className="form-control"
+                          placeholder="Min Price"
+                          value={filters.priceRange[0]}
+                          onChange={handePriceChange}
+                          />
                     </div>
                     <div className="col">
-                        <input type="number" className="form-control" placeholder="Max Price"/>
+                        <input type="number" 
+                        className="form-control" 
+                        placeholder="Max Price"
+                        value={filters.priceRange[1]}
+                        onChange={handePriceChange}
+                        />
                     </div>
                 
                 </div>
