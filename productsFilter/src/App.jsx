@@ -8,15 +8,15 @@ import ProductList from './components/ProductList'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
  <div className='container my-4'> 
   <div className='row'>
-    <div className='col-lg-3'>
+    <div className='col-lg-3 shadow '>
       <ProductFilter/>
     </div>
-    <div className='col-lg-9'>
+    <div className='col-lg-9 '>
       <ProductList/>
     </div>
  </div>

@@ -1,7 +1,20 @@
 //filter products
+
+import productStore from "../store";
+import { fetchCategory } from "../api";
+import { useEffect } from "react";
+
+
+
 const ProductFilter=()=>{
 
-    const categories = [];
+    const {categories,setCategories} = productStore();
+
+
+    useEffect(()=>{
+        fetchCategory().then(setCategories)
+    },[])
+
 
     return(
         <div>
@@ -12,9 +25,9 @@ const ProductFilter=()=>{
                 <h5>
                     category
                     {categories.map(cat => (
-                        <div className="form-check">
+                        <div key = {cat.id} className="form-check">
                             <input type="checkbox" className="form-check-input"/>
-                            <label htmlFor="">{category.name}</label>
+                            <label htmlFor="">{cat.name}</label>
 
                         </div>
                     ))}
