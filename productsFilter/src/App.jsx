@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import { useState } from 'react'
 import ProductFilter from './components/ProductFilter'
 import ProductList from './components/ProductList'
@@ -9,13 +11,15 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
- <div> 
-    <div>
+ <div className='container my-4'> 
+  <div className='row'>
+    <div className='col-lg-3'>
       <ProductFilter/>
     </div>
-    <div>
+    <div className='col-lg-9'>
       <ProductList/>
     </div>
+ </div>
  </div>
   )
 }
